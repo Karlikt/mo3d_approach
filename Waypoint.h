@@ -1,5 +1,9 @@
 #include <string>
+#ifdef __linux__ 
 #include <rapidxml.h>
+#elif _WIN32
+#include <rapidxml.hpp>
+#endif
 
 class Waypoint{
 	public: //docelowo private, ale na razie dla testow ;)

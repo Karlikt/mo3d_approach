@@ -1,10 +1,15 @@
 #include <cstdio>
 #include <iostream>
 #include <fstream>
+#ifdef __linux__ 
 #include <rapidxml.h>
-
-
 #include <rapidxml_print.h>
+#elif _WIN32
+#include <rapidxml.hpp>
+#include <rapidxml_print.hpp>
+#endif
+
+
 
 
 #include "Waypoint.h"
@@ -22,13 +27,14 @@ int main(int argc, char *argv[]){
 
 	input.seekg(0, std::ios::end);
 	
-	filesize = input.tellg();
+	filesize = (int)input.tellg();
 
 	input.seekg(0, std::ios::beg);
 
-	xmldoc = new char[filesize];
+	xmldoc = new char[filesize+1];
 
 	input.read(xmldoc, filesize);
+	xmldoc[filesize]=0;
 
 
 	rapidxml::xml_document<> doc;
@@ -47,5 +53,7 @@ int main(int argc, char *argv[]){
 		Waypoint temp(waypoint);
 		std::cout << temp.name << ": " << temp.type << " coords " << temp.lat << ";" << temp.lon << std::endl;
 	}
-
+#if _WIN32
+	system("pause");
+#endif
 }
