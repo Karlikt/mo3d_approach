@@ -9,9 +9,7 @@
 #include <rapidxml_print.hpp>
 #endif
 
-
-
-
+#include "ApproachList.h"
 #include "Waypoint.h"
 
 int main(int argc, char *argv[]){
@@ -51,7 +49,10 @@ int main(int argc, char *argv[]){
 	{
 //		std::cout << waypoint->first_node("Name")->value() << ": " << waypoint->first_node("Type")->value() << " coords " << waypoint->first_node("Latitude")->value() << ";" << waypoint->first_node("Longitude")->value() << std::endl;
 		Waypoint temp(waypoint);
-		std::cout << temp.name << ": " << temp.type << " coords " << temp.lat << ";" << temp.lon << std::endl;
+		ApproachList::waypts.insert(std::pair<std::string, Waypoint>(temp.name, temp));
+	}
+	for(std::map<std::string, Waypoint>::iterator itek = ApproachList::waypts.begin() ; itek != ApproachList::waypts.end() ; itek++){
+		std::cout << itek->second.name << ": " << itek->second.type << " coords " << itek->second.lat << ";" << itek->second.lon << std::endl;
 	}
 #if _WIN32
 	system("pause");

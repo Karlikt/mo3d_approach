@@ -1,3 +1,6 @@
+#ifndef WAYPOINT_H
+#define WAYPOINT_H
+
 #include <string>
 #ifdef __linux__ 
 #include <rapidxml.h>
@@ -14,3 +17,5 @@ class Waypoint{
 	public:
 		Waypoint(rapidxml::xml_node<> *x);
 };
+
+#endif
