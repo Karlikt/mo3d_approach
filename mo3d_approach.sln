@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mo3d_approach", "mo3d_approach.vcxproj", "{D7229B50-EE1B-DB02-1102-382E4D59D9A1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mo3d_approach", "mo3d_approach.vcxproj", "{DCFED6F2-C83A-F459-CA67-1371D552C7C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D7229B50-EE1B-DB02-1102-382E4D59D9A1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D7229B50-EE1B-DB02-1102-382E4D59D9A1}.Debug|Win32.Build.0 = Debug|Win32
-		{D7229B50-EE1B-DB02-1102-382E4D59D9A1}.Release|Win32.ActiveCfg = Release|Win32
-		{D7229B50-EE1B-DB02-1102-382E4D59D9A1}.Release|Win32.Build.0 = Release|Win32
+		{DCFED6F2-C83A-F459-CA67-1371D552C7C3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DCFED6F2-C83A-F459-CA67-1371D552C7C3}.Debug|Win32.Build.0 = Debug|Win32
+		{DCFED6F2-C83A-F459-CA67-1371D552C7C3}.Release|Win32.ActiveCfg = Release|Win32
+		{DCFED6F2-C83A-F459-CA67-1371D552C7C3}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
