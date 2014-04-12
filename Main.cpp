@@ -9,8 +9,9 @@
 #include <rapidxml_print.hpp>
 #endif
 
-#include "ApproachList.h"
+#include "WaypointIntegrator.h"
 #include "Waypoint.h"
+#include "ApproachProcedure.h"
 
 int main(int argc, char *argv[]){
 	char *filename = "EPKT_scenario.xml";
@@ -43,16 +44,26 @@ int main(int argc, char *argv[]){
 	rapidxml::xml_node<> *wp_list = doc.first_node()->first_node("WaypointList");
 	rapidxml::xml_node<> *app_list = doc.first_node()->first_node("ApproachProcedureList");
 
-	//rapidxml::print(std::cout, *wp_list, 0);
-	//rapidxml::print(std::cout, *app_list, 0);
 	for(rapidxml::xml_node<> *waypoint = wp_list->first_node("Waypoint") ; waypoint != 0 ; waypoint = waypoint->next_sibling())
 	{
 //		std::cout << waypoint->first_node("Name")->value() << ": " << waypoint->first_node("Type")->value() << " coords " << waypoint->first_node("Latitude")->value() << ";" << waypoint->first_node("Longitude")->value() << std::endl;
 		Waypoint temp(waypoint);
-		ApproachList::waypts.insert(std::pair<std::string, Waypoint>(temp.name, temp));
+		WaypointIntegrator::waypts.insert(std::pair<std::string, Waypoint>(temp.name, temp));
 	}
-	for(std::map<std::string, Waypoint>::iterator itek = ApproachList::waypts.begin() ; itek != ApproachList::waypts.end() ; itek++){
+	for(std::map<std::string, Waypoint>::iterator itek = WaypointIntegrator::waypts.begin() ; itek != WaypointIntegrator::waypts.end() ; itek++){
 		std::cout << itek->second.name << ": " << itek->second.type << " coords " << itek->second.lat << ";" << itek->second.lon << std::endl;
+	}
+	for(rapidxml::xml_node<> *app = app_list->first_node("ApproachProcedure") ; app != 0 ; app = app->next_sibling())
+	{
+		ApproachProcedure temp(app);
+		std::cout 
+			<< temp.name << std::endl
+			<< temp.desc << std::endl
+			<< temp.waypoints_list.begin()->name << std::endl
+			<< temp.waypoints_list.begin()->getWaypoint()->lat << "," << temp.waypoints_list.begin()->getWaypoint()->lon << std::endl
+			<< (++temp.waypoints_list.begin())->name << std::endl
+			<< (++temp.waypoints_list.begin())->getWaypoint()->lat << "," << (++temp.waypoints_list.begin())->getWaypoint()->lon << std::endl
+			<< std::endl;
 	}
 #if _WIN32
 	system("pause");

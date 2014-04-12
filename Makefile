@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-g -Wall -Wextra
-OBJS=Main.o Waypoint.o ApproachList.o
+OBJS=Main.o Waypoint.o WaypointIntegrator.o ApproachProcedure.o
 
 mo3d: $(OBJS)
 		$(CC) $(LFLAGS) $(CFLAGS) $(OBJS) -o mo3d
